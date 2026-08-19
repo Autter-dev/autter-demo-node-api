@@ -8,12 +8,15 @@ labels: ["autter-sandbox", "security"]
 # Challenge: Error handler returns internal details
 
 ## Context
+
 This repository is an Autter Sandbox project. The feature is intentionally close to code teams ship in production, where small AI-generated changes can create security, reliability, or maintainability risks.
 
 ## Problem
+
 Thrown errors reveal implementation details in production responses.
 
 ## Expected Behavior
+
 The implementation should handle this case safely while preserving the existing product behavior and local developer workflow.
 
 ## Suggested AI Editor Prompt
@@ -34,20 +37,20 @@ Requirements:
 
 ## Acceptance Criteria
 
-* [ ] The issue is fixed
-* [ ] Relevant tests are added or updated
-* [ ] Existing behavior is preserved
-* [ ] No unrelated refactors
-* [ ] The PR description explains the approach
-* [ ] Autter review passes
+- [ ] The issue is fixed
+- [ ] Relevant tests are added or updated
+- [ ] Existing behavior is preserved
+- [ ] No unrelated refactors
+- [ ] The PR description explains the approach
+- [ ] Autter review passes
 
 ## What Autter Should Review
 
-* information leakage
-* missing tests or weak negative tests
-* unsafe trust boundaries
-* regressions in adjacent behavior
-* merge readiness
+- information leakage
+- missing tests or weak negative tests
+- unsafe trust boundaries
+- regressions in adjacent behavior
+- merge readiness
 
 ---
 

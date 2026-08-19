@@ -58,32 +58,36 @@ Some tests use expected-failure markers. They document known broken behavior whi
 
 ## Challenges
 
-| Challenge | Difficulty | Category | Expected Autter review angle |
-| --- | --- | --- | --- |
-| [API key lookup allows inactive keys](./challenges/api-key-lookup-allows-inactive-keys.md) | Medium | Auth | auth bypass |
-| [Missing rate limit on token creation endpoint](./challenges/missing-rate-limit-on-token-creation-endpoint.md) | Medium | Security | abuse prevention gap |
-| [Webhook retry logic duplicates delivery](./challenges/webhook-retry-logic-duplicates-delivery.md) | High | Reliability | side-effect duplication |
-| [Admin endpoint trusts client-provided role](./challenges/admin-endpoint-trusts-client-provided-role.md) | High | Authorization | privilege escalation |
-| [Audit logs miss failed auth attempts](./challenges/audit-logs-miss-failed-auth-attempts.md) | Medium | Observability | security monitoring gap |
-| [Zod validation strips fields incorrectly](./challenges/zod-validation-strips-fields-incorrectly.md) | Medium | Validation | data loss regression |
-| [Pagination returns inconsistent results](./challenges/pagination-returns-inconsistent-results.md) | Medium | Data | unstable pagination |
-| [Error handler returns internal details](./challenges/error-handler-returns-internal-details.md) | Low | Security | information leakage |
+| Challenge                                                                                                      | Difficulty | Category      | Expected Autter review angle |
+| -------------------------------------------------------------------------------------------------------------- | ---------- | ------------- | ---------------------------- |
+| [API key lookup allows inactive keys](./challenges/api-key-lookup-allows-inactive-keys.md)                     | Medium     | Auth          | auth bypass                  |
+| [Missing rate limit on token creation endpoint](./challenges/missing-rate-limit-on-token-creation-endpoint.md) | Medium     | Security      | abuse prevention gap         |
+| [Webhook retry logic duplicates delivery](./challenges/webhook-retry-logic-duplicates-delivery.md)             | High       | Reliability   | side-effect duplication      |
+| [Admin endpoint trusts client-provided role](./challenges/admin-endpoint-trusts-client-provided-role.md)       | High       | Authorization | privilege escalation         |
+| [Audit logs miss failed auth attempts](./challenges/audit-logs-miss-failed-auth-attempts.md)                   | Medium     | Observability | security monitoring gap      |
+| [Zod validation strips fields incorrectly](./challenges/zod-validation-strips-fields-incorrectly.md)           | Medium     | Validation    | data loss regression         |
+| [Pagination returns inconsistent results](./challenges/pagination-returns-inconsistent-results.md)             | Medium     | Data          | unstable pagination          |
+| [Error handler returns internal details](./challenges/error-handler-returns-internal-details.md)               | Low        | Security      | information leakage          |
 
 ## Recommended PR description
 
 ```markdown
 ## What changed
+
 - Fixed the selected challenge
 - Added or updated regression coverage
 
 ## Why
+
 - The previous implementation allowed the broken behavior described in `/challenges/...`
 
 ## Validation
+
 - npm test
 - npm run build
 
 ## Risks
+
 - Note any behavior that Autter should review carefully
 ```
 
