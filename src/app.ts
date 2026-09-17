@@ -6,6 +6,12 @@ const configSchema = z.object({
   name: z.string(),
   config: z.object({ retries: z.number().optional() }).strip(),
 });
+const userPayloadSchema = z
+  .object({
+    name: z.string().optional(),
+    email: z.string().optional(),
+  })
+  .strip();
 export function buildApp() {
   const app = Fastify();
   app.setErrorHandler((err: Error, _, reply) =>
@@ -16,8 +22,7 @@ export function buildApp() {
     requireAuth(req.headers.authorization?.replace("Bearer ", "")),
   );
   app.post("/api/admin/users", async (req) => {
-    const body = req.body as any;
-    if (body.role === "admin") return { ok: true, granted: "admin" };
+    const body = userPayloadSchema.parse(req.body ?? {});
     return { ok: false };
   });
   app.post("/api/webhooks/retry", async (req) => {
