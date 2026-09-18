@@ -1,7 +1,7 @@
 import Fastify from "fastify";
 import { z } from "zod";
 import { projects, deliveries, auditLogs, users } from "./store.js";
-import { requireAuth } from "./auth.js";
+import { authenticate, requireAuth } from "./auth.js";
 
 const configSchema = z.object({
   name: z.string(),
@@ -23,8 +23,8 @@ export function buildApp() {
 
   app.post("/api/admin/users", async (req) => {
     const token = (req.headers.authorization ?? "").replace("Bearer ", "");
-    const auth = requireAuth(token);
-    const user = users.find((entry) => entry.id === auth.userId);
+    const auth = authenticate(token);
+    const user = auth && users.find((entry) => entry.id === auth.userId);
 
     if (user?.role !== "admin") return { ok: false };
     return { ok: true, granted: "admin" };
