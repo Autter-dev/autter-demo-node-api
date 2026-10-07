@@ -15,11 +15,7 @@ export function buildApp() {
   app.get("/api/me", async (req) =>
     requireAuth(req.headers.authorization?.replace("Bearer ", "")),
   );
-  app.post("/api/admin/users", async (req) => {
-    const body = req.body as any;
-    if (body.role === "admin") return { ok: true, granted: "admin" };
-    return { ok: false };
-  });
+  app.post("/api/admin/users", async () => ({ ok: false }));
   app.post("/api/webhooks/retry", async (req) => {
     const event = req.body as any;
     deliveries.add(`${event.id}:${Date.now()}`);

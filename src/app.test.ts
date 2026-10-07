@@ -5,7 +5,7 @@ describe("planted API bugs", () => {
   test.fails("rejects inactive keys", () => {
     expect(authenticate("revoked-token")).toBeNull();
   });
-  test.fails("does not trust admin role from body", async () => {
+  test("does not trust admin role from body", async () => {
     const app = buildApp();
     const res = await app.inject({
       method: "POST",
